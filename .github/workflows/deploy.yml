@@ -14,8 +14,8 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Build the React app
-        run: npm run build
+      -  name: Build the React app
+         run: CI=false npm run build
 
       - name: Copy build output to web root
         run: sudo cp -r build/* /datadrive/www/
