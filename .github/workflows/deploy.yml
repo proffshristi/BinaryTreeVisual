@@ -11,8 +11,14 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Copy files to web root
-        run: sudo cp -r * /datadrive/www/
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build the React app
+        run: npm run build
+
+      - name: Copy build output to web root
+        run: sudo cp -r build/* /datadrive/www/
 
       - name: Reload nginx
         run: sudo systemctl reload nginx
