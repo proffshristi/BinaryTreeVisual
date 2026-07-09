@@ -5,8 +5,8 @@ on:
     branches: [main]
 
 jobs:
-  deploy:
-    runs-on: self-hosted
+  deploy-vm-learningus:
+    runs-on: [self-hosted, vm-learning]
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -14,8 +14,26 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      -  name: Build the React app
-         run: CI=false npm run build
+      - name: Build the React app
+        run: CI=false npm run build
+
+      - name: Copy build output to web root
+        run: sudo cp -r build/* /datadrive/www/
+
+      - name: Reload nginx
+        run: sudo systemctl reload nginx
+
+  deploy-shristivm:
+    runs-on: [self-hosted, shristivm]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build the React app
+        run: CI=false npm run build
 
       - name: Copy build output to web root
         run: sudo cp -r build/* /datadrive/www/
