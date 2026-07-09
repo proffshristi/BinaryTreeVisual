@@ -228,7 +228,7 @@ const BSTVisualizer = () => {
     <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-br from-blue-100 to-indigo-200 p-8">
       <div className="bg-white p-6 rounded-lg shadow-lg w-[800px] text-center">
         <h1 className="text-4xl font-extrabold text-indigo-600 mb-6">
-          Binary 🌳
+          Binary Tree  🌳
         </h1>
 
         <div className="flex gap-3 justify-center mb-6">
