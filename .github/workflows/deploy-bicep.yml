@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - 'main.bicep'
+ workflow_dispatch:
 
 jobs:
   deploy-infra:
