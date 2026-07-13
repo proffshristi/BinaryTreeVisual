@@ -24,7 +24,7 @@ jobs:
         run: sudo systemctl reload nginx
 
   deploy-bicep-vm:
-    runs-on: [self-hosted, bicep-vm]
+    runs-on: self-hosted
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
