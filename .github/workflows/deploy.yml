@@ -23,7 +23,7 @@ jobs:
       - name: Reload nginx
         run: sudo systemctl reload nginx
 
-  deploy-shristivm:
+  deploy-bicep-vm:
     runs-on: [self-hosted, bicep-vm]
     steps:
       - name: Checkout code
@@ -36,7 +36,7 @@ jobs:
         run: CI=false npm run build
 
       - name: Copy build output to web root
-        run: sudo cp -r build/* /datadrive/www/
+        run: sudo cp -r build/* /var/www/html/
 
       - name: Reload nginx
         run: sudo systemctl reload nginx
