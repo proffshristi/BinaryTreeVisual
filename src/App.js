@@ -231,7 +231,7 @@ const BSTVisualizer = () => {
         <h1 className="text-4xl font-extrabold text-indigo-600 mb-6">
           Virtual Binary Tree  🌳
         </h1>
-
+        <h2 className="text-4xl font-extrabold text-indigo-600 mb-6"> Draw your own Virtual Binary Tree</h2>
         <div className="flex gap-3 justify-center mb-6">
           <input
             type="number"
