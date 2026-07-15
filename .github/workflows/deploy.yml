@@ -1,4 +1,4 @@
-name: Deploy to Azure VM (self-hosted)
+name: Deploy to Azure VMs (self-hosted)
 
 on:
   push:
@@ -7,15 +7,15 @@ on:
 
 jobs:
   deploy:
-    runs-on: self-hosted
-    # ^ THIS is the key change - instead of "ubuntu-latest" (GitHub's servers),
-    #   this tells GitHub "run this job on MY registered VM instead"
+    strategy:
+      matrix:
+        runner_label: [revision-vm, revision-vm2]
+        # ^ replace with the EXACT names shown in GitHub's Runners page
+    runs-on: ${{ matrix.runner_label }}
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-        # ^ this automatically clones/pulls your repo directly onto the VM -
-        #   this REPLACES you manually running "git clone" yourself
 
       - name: Install dependencies
         run: npm install
@@ -25,5 +25,4 @@ jobs:
 
       - name: Restart app with pm2
         run: |
-          pm2 restart BinaryTreeVisual || pm2 start server.js --name BinaryTreeVisual
-          # ^ tries to restart if already running, otherwise starts fresh
+          pm2 restart myapp || pm2 start server.js --name myapp
