@@ -10,7 +10,6 @@ jobs:
     strategy:
       matrix:
         runner_label: [revision-vm, revision-vm2]
-        # ^ replace with the EXACT names shown in GitHub's Runners page
     runs-on: ${{ matrix.runner_label }}
 
     steps:
@@ -25,4 +24,4 @@ jobs:
 
       - name: Restart app with pm2
         run: |
-          pm2 restart myapp || pm2 start server.js --name myapp
+          pm2 restart BinaryTreeVisual || pm2 start server.js --name BinaryTreeVisual
